@@ -92,7 +92,7 @@ class KLDivLossOpMaker : public framework::OpProtoAndCheckerMaker {
 
          KL divergence loss calculates as follows:
 
-         $$l(x, y) = y * (\log y - x)$$
+         $$l(x, y) = y * (\log(y) - x)$$
 
          While :attr:`reduction` is :attr:`none`, output loss is in
          same shape with Input(X), loss in each point is calculated 
