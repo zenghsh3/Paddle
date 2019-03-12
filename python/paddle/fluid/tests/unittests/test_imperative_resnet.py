@@ -277,7 +277,7 @@ class TestImperativeResnet(unittest.TestCase):
 
                 dy_grad_value = {}
                 for param in resnet.parameters():
-                    if param.trainable:
+                    if not param.stop_gradient:
                         np_array = np.array(param._ivar._grad_ivar().value()
                                             .get_tensor())
                         dy_grad_value[param.name + core.grad_var_suffix(
@@ -322,7 +322,7 @@ class TestImperativeResnet(unittest.TestCase):
             for param in resnet.parameters():
                 static_param_name_list.append(param.name)
             for param in resnet.parameters():
-                if param.trainable:
+                if not param.stop_gradient:
                     static_grad_name_list.append(param.name +
                                                  core.grad_var_suffix())
 
